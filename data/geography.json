@@ -1,0 +1,35 @@
+{
+  "questions": [
+    { "q": "Which continent is Brazil in?", "options": ["Asia", "Europe", "South America", "Africa"], "answer": "South America" },
+    { "q": "Mount Everest is in which country?", "options": ["Nepal", "USA", "Switzerland", "China"], "answer": "Nepal" },
+    { "q": "Which is the biggest ocean?", "options": ["Arctic", "Pacific", "Atlantic", "Indian"], "answer": "Pacific" },
+    { "q": "What is the capital of France?", "options": ["Berlin", "Madrid", "Paris", "Rome"], "answer": "Paris" },
+    { "q": "Which country has the largest population?", "options": ["India", "China", "USA", "Indonesia"], "answer": "China" },
+    { "q": "What is the longest river in the world?", "options": ["Amazon", "Nile", "Yangtze", "Mississippi"], "answer": "Nile" },
+    { "q": "Which desert is the largest in the world?", "options": ["Sahara", "Arabian", "Gobi", "Antarctic"], "answer": "Antarctic" },
+    { "q": "What is the capital of Japan?", "options": ["Seoul", "Beijing", "Tokyo", "Bangkok"], "answer": "Tokyo" },
+    { "q": "Which country is known as the Land of the Rising Sun?", "options": ["China", "Japan", "Thailand", "Korea"], "answer": "Japan" },
+    { "q": "What is the smallest country in the world?", "options": ["Monaco", "Vatican City", "San Marino", "Liechtenstein"], "answer": "Vatican City" },
+    { "q": "Which continent has the most countries?", "options": ["Asia", "Africa", "Europe", "South America"], "answer": "Africa" },
+    { "q": "What is the capital of Australia?", "options": ["Sydney", "Melbourne", "Canberra", "Perth"], "answer": "Canberra" },
+    { "q": "Which mountain range separates Europe and Asia?", "options": ["Himalayas", "Alps", "Ural", "Andes"], "answer": "Ural" },
+    { "q": "What is the largest island in the world?", "options": ["Greenland", "New Guinea", "Borneo", "Madagascar"], "answer": "Greenland" },
+    { "q": "Which country has the most time zones?", "options": ["Russia", "USA", "France", "China"], "answer": "France" },
+    { "q": "What is the capital of Canada?", "options": ["Toronto", "Vancouver", "Ottawa", "Montreal"], "answer": "Ottawa" },
+    { "q": "Which river flows through Egypt?", "options": ["Amazon", "Nile", "Danube", "Ganges"], "answer": "Nile" },
+    { "q": "What is the capital of Spain?", "options": ["Barcelona", "Madrid", "Seville", "Valencia"], "answer": "Madrid" },
+    { "q": "Which country is home to the Great Barrier Reef?", "options": ["Australia", "Indonesia", "Philippines", "Malaysia"], "answer": "Australia" },
+    { "q": "What is the tallest mountain in Africa?", "options": ["Mount Kenya", "Kilimanjaro", "Mount Stanley", "Ras Dashen"], "answer": "Kilimanjaro" },
+    { "q": "Which sea is the saltiest?", "options": ["Dead Sea", "Red Sea", "Black Sea", "Baltic Sea"], "answer": "Dead Sea" },
+    { "q": "What is the capital of Germany?", "options": ["Munich", "Hamburg", "Berlin", "Frankfurt"], "answer": "Berlin" },
+    { "q": "Which US state is the largest by area?", "options": ["Texas", "California", "Alaska", "Montana"], "answer": "Alaska" },
+    { "q": "What is the longest mountain range in the world?", "options": ["Himalayas", "Rockies", "Andes", "Alps"], "answer": "Andes" },
+    { "q": "Which country is both in Europe and Asia?", "options": ["Russia", "Egypt", "Turkey", "Both A and C"], "answer": "Both A and C" },
+    { "q": "What is the capital of Italy?", "options": ["Venice", "Milan", "Rome", "Florence"], "answer": "Rome" },
+    { "q": "Which African country was never colonized?", "options": ["Kenya", "Ethiopia", "Nigeria", "Ghana"], "answer": "Ethiopia" },
+    { "q": "What is the southernmost continent?", "options": ["South America", "Australia", "Africa", "Antarctica"], "answer": "Antarctica" },
+    { "q": "Which European city is divided by the Danube River?", "options": ["Vienna", "Budapest", "Belgrade", "All of these"], "answer": "All of these" },
+    { "q": "What is the official language of Brazil?", "options": ["Spanish", "Portuguese", "English", "French"], "answer": "Portuguese" }
+  ]
+}
+

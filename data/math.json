@@ -1,0 +1,35 @@
+{
+  "questions": [
+    { "q": "What is 5 * 5?", "options": ["10", "15", "20", "25"], "answer": "25" },
+    { "q": "What is the square root of 81?", "options": ["9", "8", "7", "6"], "answer": "9" },
+    { "q": "What is 14 % 5?", "options": ["3", "4", "1", "2"], "answer": "4" },
+    { "q": "What is 12 + 8?", "options": ["18", "19", "20", "21"], "answer": "20" },
+    { "q": "What is 100 / 4?", "options": ["20", "25", "30", "35"], "answer": "25" },
+    { "q": "What is 7 * 8?", "options": ["54", "56", "58", "60"], "answer": "56" },
+    { "q": "What is 2^6?", "options": ["32", "64", "128", "256"], "answer": "64" },
+    { "q": "What is 15% of 200?", "options": ["20", "25", "30", "35"], "answer": "30" },
+    { "q": "What is the value of π (pi) rounded to 2 decimals?", "options": ["3.12", "3.14", "3.16", "3.18"], "answer": "3.14" },
+    { "q": "What is 9^2?", "options": ["72", "81", "90", "99"], "answer": "81" },
+    { "q": "What is the cube root of 27?", "options": ["2", "3", "4", "5"], "answer": "3" },
+    { "q": "What is 144 / 12?", "options": ["10", "11", "12", "13"], "answer": "12" },
+    { "q": "What is 3 * 3 * 3?", "options": ["9", "18", "27", "36"], "answer": "27" },
+    { "q": "What is the sum of angles in a triangle?", "options": ["90°", "180°", "270°", "360°"], "answer": "180°" },
+    { "q": "What is 50% of 88?", "options": ["42", "44", "46", "48"], "answer": "44" },
+    { "q": "What is 13 * 7?", "options": ["81", "91", "101", "111"], "answer": "91" },
+    { "q": "What is 225 / 15?", "options": ["13", "14", "15", "16"], "answer": "15" },
+    { "q": "What is 2^10?", "options": ["512", "1024", "2048", "4096"], "answer": "1024" },
+    { "q": "What is the square root of 144?", "options": ["10", "11", "12", "13"], "answer": "12" },
+    { "q": "What is 20% of 150?", "options": ["25", "30", "35", "40"], "answer": "30" },
+    { "q": "What is 17 - 9?", "options": ["6", "7", "8", "9"], "answer": "8" },
+    { "q": "What is 11 * 11?", "options": ["111", "121", "131", "141"], "answer": "121" },
+    { "q": "What is 64 / 8?", "options": ["6", "7", "8", "9"], "answer": "8" },
+    { "q": "What is 3^4?", "options": ["27", "64", "81", "243"], "answer": "81" },
+    { "q": "What is 75% of 200?", "options": ["125", "150", "175", "200"], "answer": "150" },
+    { "q": "What is the cube root of 64?", "options": ["2", "3", "4", "5"], "answer": "4" },
+    { "q": "What is 18 + 27?", "options": ["43", "44", "45", "46"], "answer": "45" },
+    { "q": "What is 15^2?", "options": ["200", "215", "225", "235"], "answer": "225" },
+    { "q": "What is 99 / 11?", "options": ["7", "8", "9", "10"], "answer": "9" },
+    { "q": "What is 10% of 500?", "options": ["40", "45", "50", "55"], "answer": "50" }
+  ]
+}
+

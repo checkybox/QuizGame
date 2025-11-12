@@ -1,24 +1,9 @@
-const defaultBank = {
-        "categories": {
-            "Math": [
-                { "q": "5 * 5 = ?", "options": ["10","15","20","25"], "answer": "25" },
-                { "q": "Square root of 81?", "options": ["9","8","7","6"], "answer": "9" },
-                { "q": "What is 14 % 5 ?", "options": ["3","4","1","2"], "answer": "4" }
-            ],
-            "Geography": [
-                { "q": "Which continent is Brazil in?", "options": ["Asia","Europe","South America","Africa"], "answer": "South America" },
-                { "q": "Mount Everest is in?", "options": ["Nepal","USA","Switzerland","China"], "answer": "Nepal" },
-                { "q": "Which is the biggest ocean?", "options": ["Arctic","Pacific","Atlantic","Indian"], "answer": "Pacific" }
-            ],
-            "Computer Science": [
-                { "q": "Time complexity of binary search?", "options": ["O(1)","O(N)","O(log N)","O(N log N)"], "answer": "O(log N)" },
-                { "q": "Which is NOT an OOP principle?", "options": ["Encapsulation","Inheritance","Polymorphism","Composition"], "answer": "Composition" },
-                { "q": "Which protocol is used for secure HTTP?", "options": ["SSH","SSL/TLS","FTP","SMTP"], "answer": "SSL/TLS" }
-            ]
-        }
-    };
+const categoryFiles = {
+    "Math": "data/math.json",
+    "Geography": "data/geography.json",
+    "Computer Science": "data/compsci.json"
+};
 
-let bank = JSON.parse(JSON.stringify(defaultBank));
 let currentCategory = null;
 let questions = [];
 let index = 0;
@@ -27,11 +12,22 @@ let timePerQuestion = 20;
 let timerInterval = null;
 let timeLeft = 0;
 let userAnswers = [];
+let isTransitioning = false;
+
+
+function shuffleArray(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+}
 
 function populateCategories(){
     const $sel = $('#categorySelect');
     $sel.empty();
-    const categories = Object.keys(bank.categories || {});
+    const categories = Object.keys(categoryFiles);
     if(categories.length === 0){
         $sel.append('<option>No categories found</option>');
         return;
@@ -40,16 +36,38 @@ function populateCategories(){
     currentCategory = categories[0];
 }
 
-function loadCategory(cat){
+async function loadCategory(cat, questionAmount){
     currentCategory = cat;
-    questions = (bank.categories && bank.categories[cat]) ? JSON.parse(JSON.stringify(bank.categories[cat])) : [];
-    questions = questions.map(q => ({q: q.q||q.question||'', options: q.options||[], answer: q.answer||q.ans||q.correct||''}));
+    const filePath = categoryFiles[cat];
+    if(!filePath){
+        questions = [];
+        return;
+    }
+    try {
+        const response = await fetch(filePath);
+        const data = await response.json();
+        let allQuestions = data.questions ? data.questions : [];
+        allQuestions = allQuestions.map(q => ({q: q.q||q.question||'', options: q.options||[], answer: q.answer||q.ans||q.correct||''}));
+
+        // If question amount equals total available, don't shuffle
+        if(questionAmount >= allQuestions.length){
+            questions = allQuestions;
+        } else {
+            // Randomly select the specified amount
+            const shuffled = shuffleArray(allQuestions);
+            questions = shuffled.slice(0, questionAmount);
+        }
+    } catch(e) {
+        console.error('Error loading category:', e);
+        questions = [];
+    }
 }
 
-function startQuiz(){
+async function startQuiz(){
     if(!currentCategory){ alert('No category selected'); return; }
     timePerQuestion = Math.max(5, parseInt($('#timeInput').val()||20,10));
-    loadCategory(currentCategory);
+    const questionAmount = Math.min(30, Math.max(5, parseInt($('#questionAmountInput').val()||5,10)));
+    await loadCategory(currentCategory, questionAmount);
     if(questions.length === 0){ alert('No questions in this category'); return; }
     index = 0; score = 0; userAnswers = Array(questions.length).fill(null);
 
@@ -57,17 +75,25 @@ function startQuiz(){
     $('#qTotal').text(questions.length);
     $('#gameArea').removeClass('d-none');
     $('#resultArea').addClass('d-none');
+    $('#themeSwitch').prop('disabled', true);
+    $('#startBtn').prop('disabled', true);
     renderQuestion();
 }
 
 function renderQuestion(){
     clearTimer();
+    isTransitioning = false;
     const q = questions[index];
     $('#qIndex').text(index+1);
     $('#questionText').text(q.q);
     $('#options').empty();
+
+    // Check current theme
+    const isDarkTheme = document.documentElement.getAttribute('data-bs-theme') === 'dark';
+    const btnClass = isDarkTheme ? 'btn-outline-light' : 'btn-outline-dark';
+
     q.options.forEach(opt => {
-        const $btn = $(`<button class="btn btn-outline-dark w-100 text-start mb-2 option">${opt}</button>`);
+        const $btn = $(`<button class="btn ${btnClass} w-100 text-start mb-2 option">${opt}</button>`);
         $btn.on('click', function(){ handleAnswer(opt, $(this)); });
         $('#options').append($btn);
     });
@@ -94,6 +120,7 @@ function startTimer(){
         timeLeft--; $('#timer').text(timeLeft+'s');
         if(timeLeft <= 0){
             clearTimer();
+            isTransitioning = true;
             if(userAnswers[index] === null){ userAnswers[index] = null; /* explicit */ }
             $('#options .option').each(function(){ if($(this).text()===questions[index].answer) $(this).addClass('correct'); });
             setTimeout(() => { if(index < questions.length-1) { index++; renderQuestion(); } else { finishQuiz(); } }, 800);
@@ -127,21 +154,50 @@ function finishQuiz(){
     $('#finalScore').text(score);
     $('#answeredCount').text(userAnswers.filter(a=>a!==null).length);
     $('#totalCount').text(questions.length);
+    $('#startBtn').prop('disabled', false);
+    $('#themeSwitch').prop('disabled', false);
 }
 
 $('#themeSwitch').on('change', function(){
-    if(this.checked){
-        $('body').removeClass('bg-light text-dark').addClass('bg-dark text-light');
-        $('.card').removeClass('bg-light').addClass('bg-secondary text-light');
-    } else {
-        $('body').removeClass('bg-dark text-light').addClass('bg-light text-dark');
-        $('.card').removeClass('bg-secondary text-light').addClass('bg-light text-dark');
+    const theme = this.checked ? "dark" : "light";
+    document.documentElement.setAttribute("data-bs-theme", theme);
+    localStorage.setItem('quizTheme', theme);
+});
+
+$('#startBtn').on('click', function(){
+    currentCategory = $('#categorySelect').val();
+    startQuiz();
+});
+
+$('#restartBtn').on('click', function(){
+    $('#resultArea').addClass('d-none');
+    $('#gameArea').addClass('d-none');
+    $('#startBtn').focus();
+});
+
+$(document).on('keydown', function(e){
+    // Prevent space/enter from triggering buttons when in game area
+    if(!$('#gameArea').hasClass('d-none')){
+        if(e.keyCode === 32 || e.keyCode === 13){
+            // Only allow if question is answered and not transitioning
+            if(userAnswers[index] !== null && timerInterval === null && !isTransitioning){
+                e.preventDefault();
+                nextQuestion();
+            } else {
+                // Prevent default button behavior
+                e.preventDefault();
+            }
+        }
     }
 });
 
-$('#startBtn').on('click', function(){ currentCategory = $('#categorySelect').val(); startQuiz(); });
-$('#nextBtn').on('click', nextQuestion);
-$('#prevBtn').on('click', prevQuestion);
-$('#restartBtn').on('click', function(){ $('#resultArea').addClass('d-none'); $('#gameArea').addClass('d-none'); $('#startBtn').focus(); });
+$(function(){
+    // Load saved theme preference
+    const savedTheme = localStorage.getItem('quizTheme') || 'light';
+    document.documentElement.setAttribute('data-bs-theme', savedTheme);
+    $('#themeSwitch').prop('checked', savedTheme === 'dark');
 
-$(function(){ populateCategories(); });
+    $('#prevBtn').on('click', prevQuestion);
+    $('#nextBtn').on('click', nextQuestion);
+    populateCategories();
+});
