@@ -31,12 +31,16 @@
 
             <div class="card quiz-card shadow-sm p-4 mb-4">
                 <div class="row g-3 align-items-center">
-                    <div class="col-md-6">
-                        <label class="form-label">Category</label>
+                    <div class="col-md-4">
+                        <label class="form-label" for="categorySelect">Category</label>
                         <select id="categorySelect" class="form-select"></select>
                     </div>
-                    <div class="col-md-4">
-                        <label class="form-label">Time per question</label>
+                    <div class="col-md-3">
+                        <label class="form-label" for="questionAmountInput">Question amount</label>
+                        <input id="questionAmountInput" type="number" class="form-control" placeholder="Amount" min="5" max="30" value="5">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label" for="timeInput">Time per question</label>
                         <input id="timeInput" type="number" class="form-control" placeholder="seconds" min="5" max="30" value="20">
                     </div>
                     <div class="col-md-2 mt-5">
