@@ -1,0 +1,20 @@
+{
+  "questions": [
+    { "q": "Which continent is Brazil in?", "options": ["Asia", "Europe", "South America", "Africa"], "answer": "South America" },
+    { "q": "Mount Everest is in which country?", "options": ["Nepal", "USA", "Switzerland", "China"], "answer": "Nepal" },
+    { "q": "Which is the biggest ocean?", "options": ["Arctic", "Pacific", "Atlantic", "Indian"], "answer": "Pacific" },
+    { "q": "What is the capital of France?", "options": ["Berlin", "Madrid", "Paris", "Rome"], "answer": "Paris" },
+    { "q": "Which country has the largest population?", "options": ["India", "China", "USA", "Indonesia"], "answer": "China" },
+    { "q": "What is the longest river in the world?", "options": ["Amazon", "Nile", "Yangtze", "Mississippi"], "answer": "Nile" },
+    { "q": "Which desert is the largest in the world?", "options": ["Sahara", "Arabian", "Gobi", "Antarctic"], "answer": "Antarctic" },
+    { "q": "What is the capital of Japan?", "options": ["Seoul", "Beijing", "Tokyo", "Bangkok"], "answer": "Tokyo" },
+    { "q": "Which country is known as the Land of the Rising Sun?", "options": ["China", "Japan", "Thailand", "Korea"], "answer": "Japan" },
+    { "q": "What is the smallest country in the world?", "options": ["Monaco", "Vatican City", "San Marino", "Liechtenstein"], "answer": "Vatican City" },
+    { "q": "Which continent has the most countries?", "options": ["Asia", "Africa", "Europe", "South America"], "answer": "Africa" },
+    { "q": "What is the capital of Australia?", "options": ["Sydney", "Melbourne", "Canberra", "Perth"], "answer": "Canberra" },
+    { "q": "Which mountain range separates Europe and Asia?", "options": ["Himalayas", "Alps", "Ural", "Andes"], "answer": "Ural" },
+    { "q": "What is the largest island in the world?", "options": ["Greenland", "New Guinea", "Borneo", "Madagascar"], "answer": "Greenland" },
+    { "q": "Which country has the most time zones?", "options": ["Russia", "USA", "France", "China"], "answer": "France" }
+  ]
+}
+

@@ -1,0 +1,20 @@
+{
+  "questions": [
+    { "q": "What is 5 * 5?", "options": ["10", "15", "20", "25"], "answer": "25" },
+    { "q": "What is the square root of 81?", "options": ["9", "8", "7", "6"], "answer": "9" },
+    { "q": "What is 14 % 5?", "options": ["3", "4", "1", "2"], "answer": "4" },
+    { "q": "What is 12 + 8?", "options": ["18", "19", "20", "21"], "answer": "20" },
+    { "q": "What is 100 / 4?", "options": ["20", "25", "30", "35"], "answer": "25" },
+    { "q": "What is 7 * 8?", "options": ["54", "56", "58", "60"], "answer": "56" },
+    { "q": "What is 2^6?", "options": ["32", "64", "128", "256"], "answer": "64" },
+    { "q": "What is 15% of 200?", "options": ["20", "25", "30", "35"], "answer": "30" },
+    { "q": "What is the value of π (pi) rounded to 2 decimals?", "options": ["3.12", "3.14", "3.16", "3.18"], "answer": "3.14" },
+    { "q": "What is 9^2?", "options": ["72", "81", "90", "99"], "answer": "81" },
+    { "q": "What is the cube root of 27?", "options": ["2", "3", "4", "5"], "answer": "3" },
+    { "q": "What is 144 / 12?", "options": ["10", "11", "12", "13"], "answer": "12" },
+    { "q": "What is 3 * 3 * 3?", "options": ["9", "18", "27", "36"], "answer": "27" },
+    { "q": "What is the sum of angles in a triangle?", "options": ["90°", "180°", "270°", "360°"], "answer": "180°" },
+    { "q": "What is 50% of 88?", "options": ["42", "44", "46", "48"], "answer": "44" }
+  ]
+}
+

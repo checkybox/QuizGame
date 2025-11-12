@@ -1,0 +1,19 @@
+{
+  "questions": [
+    { "q": "What is the time complexity of binary search?", "options": ["O(1)", "O(N)", "O(log N)", "O(N log N)"], "answer": "O(log N)" },
+    { "q": "Which is NOT an OOP principle?", "options": ["Encapsulation", "Inheritance", "Polymorphism", "Compilation"], "answer": "Compilation" },
+    { "q": "Which protocol is used for secure HTTP?", "options": ["SSH", "SSL/TLS", "FTP", "SMTP"], "answer": "SSL/TLS" },
+    { "q": "What does SQL stand for?", "options": ["Structured Query Language", "Simple Query Language", "Standard Query Language", "System Query Language"], "answer": "Structured Query Language" },
+    { "q": "What is the default port for HTTP?", "options": ["21", "22", "80", "443"], "answer": "80" },
+    { "q": "Which data structure uses LIFO?", "options": ["Queue", "Stack", "Tree", "Graph"], "answer": "Stack" },
+    { "q": "What does CPU stand for?", "options": ["Central Processing Unit", "Computer Personal Unit", "Central Program Utility", "Core Processing Unit"], "answer": "Central Processing Unit" },
+    { "q": "Which language is primarily used for web styling?", "options": ["HTML", "CSS", "JavaScript", "Python"], "answer": "CSS" },
+    { "q": "What is the time complexity of accessing an array element by index?", "options": ["O(1)", "O(N)", "O(log N)", "O(N^2)"], "answer": "O(1)" },
+    { "q": "What does API stand for?", "options": ["Application Programming Interface", "Advanced Programming Interface", "Application Process Integration", "Advanced Process Interface"], "answer": "Application Programming Interface" },
+    { "q": "Which is a NoSQL database?", "options": ["MySQL", "PostgreSQL", "MongoDB", "Oracle"], "answer": "MongoDB" },
+    { "q": "What does RAM stand for?", "options": ["Random Access Memory", "Read Access Memory", "Rapid Access Memory", "Remote Access Memory"], "answer": "Random Access Memory" },
+    { "q": "Which sorting algorithm has the best average time complexity?", "options": ["Bubble Sort", "Merge Sort", "Selection Sort", "Insertion Sort"], "answer": "Merge Sort" },
+    { "q": "What does HTML stand for?", "options": ["Hyper Text Markup Language", "High Tech Modern Language", "Home Tool Markup Language", "Hyperlinks Text Markup Language"], "answer": "Hyper Text Markup Language" },
+    { "q": "Which data structure is used for BFS?", "options": ["Stack", "Queue", "Tree", "Array"], "answer": "Queue" }
+  ]
+}
