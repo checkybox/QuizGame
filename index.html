@@ -4,8 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Quiz Game</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">    <style>
         :root{--card-radius:1rem}
         .quiz-card{border-radius:var(--card-radius)}
         .option.correct{border:2px solid #28a745}
@@ -14,63 +13,72 @@
     </style>
 </head>
 <body class="bg-light text-dark">
+
 <div class="container py-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="h3 mb-0">Quiz Game</h1>
-        <div class="d-flex gap-3 align-items-center">
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="themeSwitch">
-                <label class="form-check-label" for="themeSwitch">Dark</label>
+    <div class="row">
+        <div class="col-2"></div>
+
+        <div class="col">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="h3 mb-0">Quiz Game</h1>
+                <div class="d-flex gap-3 align-items-center">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="themeSwitch">
+                        <label class="form-check-label" for="themeSwitch">Dark</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card quiz-card shadow-sm p-4 mb-4">
+                <div class="row g-3 align-items-center">
+                    <div class="col-md-6">
+                        <label class="form-label">Category</label>
+                        <select id="categorySelect" class="form-select"></select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Time per question</label>
+                        <input id="timeInput" type="number" class="form-control" placeholder="seconds" min="5" max="30" value="20">
+                    </div>
+                    <div class="col-md-2 mt-5">
+                        <button id="startBtn" class="btn btn-primary w-100">Start Quiz</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="gameArea" class="card quiz-card shadow-sm p-4 d-none">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div>
+                        <span id="qIndex">1</span> / <span id="qTotal">1</span>
+                    </div>
+                    <div>
+                        <span class="me-3">Score: <span id="score">0</span></span>
+                        <span class="countdown" id="timer">--</span>
+                    </div>
+                </div>
+
+                <h4 id="questionText"></h4>
+                <div id="options" class="mt-3"></div>
+
+                <div class="mt-4 d-flex justify-content-between">
+                    <button id="prevBtn" class="btn btn-outline-primary">Previous</button>
+                    <button id="nextBtn" class="btn btn-primary">Next</button>
+                </div>
+            </div>
+
+            <div id="resultArea" class="card quiz-card shadow-sm p-4 mt-4 d-none">
+                <h3>Results</h3>
+                <p class="mb-1">Final score: <strong id="finalScore">0</strong></p>
+                <p class="mb-3">Questions answered: <span id="answeredCount">0</span> / <span id="totalCount">0</span></p>
+                <button id="restartBtn" class="btn btn-secondary">Play again</button>
             </div>
         </div>
-    </div>
 
-    <div class="card quiz-card shadow-sm p-4 mb-4">
-        <div class="row g-3 align-items-center">
-            <div class="col-md-6">
-                <label class="form-label">Category</label>
-                <select id="categorySelect" class="form-select"></select>
-            </div>
-            <div class="col-md-3">
-                <label class="form-label">Time per question (seconds)</label>
-                <input id="timeInput" type="number" class="form-control" min="5" value="20">
-            </div>
-            <div class="col-md-3 d-flex align-items-end">
-                <button id="startBtn" class="btn btn-primary w-100">Start Quiz</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="gameArea" class="card quiz-card shadow-sm p-4 d-none">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <div>
-                <span id="qIndex">1</span> / <span id="qTotal">1</span>
-            </div>
-            <div>
-                <span class="me-3">Score: <span id="score">0</span></span>
-                <span class="countdown" id="timer">--</span>
-            </div>
-        </div>
-
-        <h4 id="questionText"></h4>
-        <div id="options" class="mt-3"></div>
-
-        <div class="mt-4 d-flex justify-content-between">
-            <button id="prevBtn" class="btn btn-outline-primary">Previous</button>
-            <button id="nextBtn" class="btn btn-primary">Next</button>
-        </div>
-    </div>
-
-    <div id="resultArea" class="card quiz-card shadow-sm p-4 mt-4 d-none">
-        <h3>Results</h3>
-        <p class="mb-1">Final score: <strong id="finalScore">0</strong></p>
-        <p class="mb-3">Questions answered: <span id="answeredCount">0</span> / <span id="totalCount">0</span></p>
-        <button id="restartBtn" class="btn btn-secondary">Play again</button>
+        <div class="col-2"></div>
     </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <script src="script.js"></script>
 </body>
 </html>
