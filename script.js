@@ -1,24 +1,10 @@
-const defaultBank = {
-        "categories": {
-            "Math": [
-                { "q": "5 * 5 = ?", "options": ["10","15","20","25"], "answer": "25" },
-                { "q": "Square root of 81?", "options": ["9","8","7","6"], "answer": "9" },
-                { "q": "What is 14 % 5 ?", "options": ["3","4","1","2"], "answer": "4" }
-            ],
-            "Geography": [
-                { "q": "Which continent is Brazil in?", "options": ["Asia","Europe","South America","Africa"], "answer": "South America" },
-                { "q": "Mount Everest is in?", "options": ["Nepal","USA","Switzerland","China"], "answer": "Nepal" },
-                { "q": "Which is the biggest ocean?", "options": ["Arctic","Pacific","Atlantic","Indian"], "answer": "Pacific" }
-            ],
-            "Computer Science": [
-                { "q": "Time complexity of binary search?", "options": ["O(1)","O(N)","O(log N)","O(N log N)"], "answer": "O(log N)" },
-                { "q": "Which is NOT an OOP principle?", "options": ["Encapsulation","Inheritance","Polymorphism","Composition"], "answer": "Composition" },
-                { "q": "Which protocol is used for secure HTTP?", "options": ["SSH","SSL/TLS","FTP","SMTP"], "answer": "SSL/TLS" }
-            ]
-        }
-    };
+const categoryFiles = {
+    "Math": "data/math.json",
+    "Geography": "data/geography.json",
+    "Computer Science": "data/compsci.json"
+};
 
-let bank = JSON.parse(JSON.stringify(defaultBank));
+let bank = { categories: {} };
 let currentCategory = null;
 let questions = [];
 let index = 0;
@@ -28,10 +14,19 @@ let timerInterval = null;
 let timeLeft = 0;
 let userAnswers = [];
 
+function shuffleArray(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+}
+
 function populateCategories(){
     const $sel = $('#categorySelect');
     $sel.empty();
-    const categories = Object.keys(bank.categories || {});
+    const categories = Object.keys(categoryFiles);
     if(categories.length === 0){
         $sel.append('<option>No categories found</option>');
         return;
@@ -40,16 +35,32 @@ function populateCategories(){
     currentCategory = categories[0];
 }
 
-function loadCategory(cat){
+async function loadCategory(cat){
     currentCategory = cat;
-    questions = (bank.categories && bank.categories[cat]) ? JSON.parse(JSON.stringify(bank.categories[cat])) : [];
-    questions = questions.map(q => ({q: q.q||q.question||'', options: q.options||[], answer: q.answer||q.ans||q.correct||''}));
+    const filePath = categoryFiles[cat];
+    if(!filePath){
+        questions = [];
+        return;
+    }
+    try {
+        const response = await fetch(filePath);
+        const data = await response.json();
+        let allQuestions = data.questions ? data.questions : [];
+        allQuestions = allQuestions.map(q => ({q: q.q||q.question||'', options: q.options||[], answer: q.answer||q.ans||q.correct||''}));
+
+        // Randomly select 5 questions
+        const shuffled = shuffleArray(allQuestions);
+        questions = shuffled.slice(0, 5);
+    } catch(e) {
+        console.error('Error loading category:', e);
+        questions = [];
+    }
 }
 
-function startQuiz(){
+async function startQuiz(){
     if(!currentCategory){ alert('No category selected'); return; }
     timePerQuestion = Math.max(5, parseInt($('#timeInput').val()||20,10));
-    loadCategory(currentCategory);
+    await loadCategory(currentCategory);
     if(questions.length === 0){ alert('No questions in this category'); return; }
     index = 0; score = 0; userAnswers = Array(questions.length).fill(null);
 
