@@ -1,0 +1,41 @@
+:root {
+    --card-radius: 1rem;
+}
+
+.quiz-card {
+    border-radius: var(--card-radius);
+}
+
+.option.correct {
+    border: 3px solid #28a745;
+}
+
+.option.wrong {
+    border: 3px solid #dc3545;
+}
+
+.countdown {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.mode-active {
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, .5);
+    border-width: 2px;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-10px);
+    }
+    75% {
+        transform: translateX(10px);
+    }
+}
+
+.game-over-shake {
+    animation: shake 0.5s ease-in-out 2;
+}
